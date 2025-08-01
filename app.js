@@ -17,10 +17,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://frontend-serveconnect.onrender.com"
+];
+
 app.use(cors({
-  origin: "http://localhost:5173", 
-  credentials: true               
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -45,7 +57,7 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on https://backendapi-gfwk.onrender.com`);
 });
 }).catch(error => {
   console.log("Database connection failed:",error);

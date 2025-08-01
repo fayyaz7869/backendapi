@@ -31,7 +31,7 @@ const sendEmail = async (email, name, token) => {
     }
   });
 
-  const verifyUrl = `http://localhost:3000/user/verify-email/${token}`;
+  const verifyUrl = `https://backendapi-gfwk.onrender.com/user/verify-email/${token}`;
 
   const mailOptions = {
     from: process.env.EMAIL,
