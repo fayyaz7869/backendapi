@@ -39,7 +39,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cookieParser());
 app.use("/user", userRoutes);
 app.use("/admin", adminRoutes);
-app.use("/volunteer", volunteerRoutes);
 app.use("/campaigns", campaignRoutes);
 app.use("/contact",contactRoutes);
 app.use("/help", helpRoutes);
