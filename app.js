@@ -7,7 +7,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
-import volunteerRoutes from "./routes/volunteer.route.js";
 import campaignRoutes from "./routes/campaign.route.js";
 import helpRoutes from "./routes/help.route.js";
 import mongoose from "mongoose";
@@ -44,7 +43,6 @@ app.use("/volunteer", volunteerRoutes);
 app.use("/campaigns", campaignRoutes);
 app.use("/contact",contactRoutes);
 app.use("/help", helpRoutes);
-app.use("/volunteer-join",volunteerRoutes)
 app.get("/", (req, res) => {
   res.send("Welcome to ServeConnect API");
 });
